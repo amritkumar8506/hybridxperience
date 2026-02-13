@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: radial-gradient(circle at center, #0f0f0f, #000000);
+  overflow-x: hidden;
+}
+
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.blob1 {
+  background: #7c3aed;
+  top: 10%;
+  left: 20%;
+}
+
+.blob2 {
+  background: #ec4899;
+  top: 40%;
+  right: 20%;
+}
+
+.blob3 {
+  background: #3b82f6;
+  bottom: 10%;
+  left: 40%;
+}
+
+
+/* Add this to your index.css or App.css */
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
