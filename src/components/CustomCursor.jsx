@@ -6,6 +6,14 @@ function CustomCursor() {
   const trailRefs = useRef([]);
 
   useEffect(() => {
+    // Check if device is mobile/touch
+    const isMobile = window.matchMedia("(max-width: 768px)").matches || 
+                     'ontouchstart' in window;
+    
+    if (isMobile) {
+      return; // Don't enable custom cursor on mobile
+    }
+
     const cursorDot = cursorDotRef.current;
     const trails = trailRefs.current;
 
@@ -43,12 +51,12 @@ function CustomCursor() {
 
   return (
     <>
-      {/* Trail gradient blobs */}
+      {/* Trail gradient blobs - hidden on mobile */}
       {[...Array(8)].map((_, i) => (
         <div
           key={i}
           ref={(el) => (trailRefs.current[i] = el)}
-          className="fixed top-0 left-0 pointer-events-none z-[9998]"
+          className="hidden md:block fixed top-0 left-0 pointer-events-none z-[9998]"
           style={{
             width: `${60 - i * 6}px`,
             height: `${60 - i * 6}px`,
@@ -65,10 +73,10 @@ function CustomCursor() {
         />
       ))}
 
-      {/* Inner cursor dot */}
+      {/* Inner cursor dot - hidden on mobile */}
       <div
         ref={cursorDotRef}
-        className="fixed top-0 left-0 pointer-events-none z-[10000]"
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-[10000]"
         style={{
           width: "6px",
           height: "6px",
